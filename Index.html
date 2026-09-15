@@ -1,0 +1,80 @@
+from fpdf import FPDF
+
+class PDF(FPDF):
+    def header(self):
+        self.set_font('Arial', 'B', 15)
+        self.cell(0, 10, 'GUIA PREMIUM: APPOGGIO AMERICANO E SUSTENTACAO DE ELITE', 0, 1, 'C')
+        self.ln(5)
+
+    def chapter_title(self, label):
+        self.set_font('Arial', 'B', 12)
+        self.set_fill_color(230, 230, 230)
+        self.cell(0, 8, label, 0, 1, 'L', fill=True)
+        self.ln(2)
+
+    def chapter_body(self, body):
+        self.set_font('Arial', '', 11)
+        self.multi_cell(0, 6, body)
+        self.ln()
+
+pdf = PDF()
+pdf.add_page()
+pdf.set_auto_page_break(auto=True, margin=15)
+
+# PÁGINA 1
+pdf.chapter_title('1. A MECÂNICA DE ELITE (O QUE É)')
+pdf.chapter_body(
+    "O Princípio do Appoggio Americano Moderno:\n"
+    "Na técnica americana de elite (SLS, IVA), o apoio não é 'empurrar' o ar. É a retenção elástica da caixa torácica.\n\n"
+    "1. Respiração 360º: O diafragma desce e as costelas expandem para os lados, frente e costas.\n"
+    "2. Antagonismo Muscular: Ao cantar, os músculos inspiratórios lutam suavemente contra os expiratórios para impedir que as costelas colapsem.\n"
+    "3. Pressão Subglótica Controlada: O ar não é empurrado; ele é liberado sob resistência. A laringe permanece neutra.\n\n"
+    "O Conceito do 'Fio de Ar' (Thread of Air):\n"
+    "A elite americana não canta com 'jatos' de ar. O fluxo deve ser contínuo, fino e sob pressão constante. A velocidade do ar é mínima; a pressão é regulada pelas costelas."
+)
+
+# PÁGINA 2
+pdf.chapter_title('2. EXERCÍCIOS PASSO A PASSO (AÇÃO)')
+pdf.chapter_body(
+    "EXERCÍCIO 1: Expansão 360º (Setup Biomecânico)\n"
+    "1. Fique de pé, ombros relaxados.\n"
+    "2. Mãos na cintura (dedos para frente, polegares nas costas).\n"
+    "3. Inspire silenciosamente. Empurre as mãos para fora. Peito NÃO sobe.\n"
+    "4. Segure a expansão por 3 segundos.\n"
+    "5. Solte o ar em 'S' suave por 10 segundos.\n\n"
+    "EXERCÍCIO 2: O Fio de Ar (Controle de Pressão)\n"
+    "1. Inspire 360º.\n"
+    "2. Emita o som 'F' ou 'V' contínuo.\n"
+    "3. Mantenha o volume estritamente igual do início ao fim.\n"
+    "4. Foco: Segure a saída do ar com as costelas, não aperte a barriga.\n\n"
+    "EXERCÍCIO 3: Vibração de Lábios ou Canudo (SOVT)\n"
+    "1. Use canudo ou vibração de lábios (Brrrr).\n"
+    "2. Escala 1-2-3-4-5-4-3-2-1.\n"
+    "3. Nas notas altas, NÃO aumente o volume de ar. Aumente a retenção costal.\n"
+    "4. Sinta a vibração na máscara.\n\n"
+    "EXERCÍCIO 4: Suspensão na Frase (Speech-Level)\n"
+    "1. Escolha uma frase longa da música.\n"
+    "2. Inspire 360º e cante usando a vogal 'U' ou 'A'.\n"
+    "3. Mantenha a costela 'aberta' enquanto o som sai.\n"
+    "4. O som deve parecer uma conversa falada (Speech Level)."
+)
+
+# PÁGINA 3
+pdf.chapter_title('3. SOLUÇÃO DE PROBLEMAS (TROUBLESHOOTING)')
+pdf.chapter_body(
+    "GARGANTA DÓI/APERTA:\n"
+    "Causa: Colapso costal; empurrar ar para compensar.\n"
+    "Correção: Volte ao Exercício 2. Cante com menos ar. Mantenha costela aberta.\n\n"
+    "FALTA AR NO FINAL:\n"
+    "Causa: Vazamento de ar no início da frase.\n"
+    "Correção: Reduza a abertura da boca no início. Use menos fluxo.\n\n"
+    "AGUDO FRACO OU GRITADO:\n"
+    "Causa: Excesso de pressão de ar (empurrão) e laringe subindo.\n"
+    "Correção: Não empurre. Aumente a compressão glótica e segure a expansão costal.\n\n"
+    "VOZ TRÊMULA:\n"
+    "Causa: Falta de resistência elástica (apoio irregular).\n"
+    "Correção: Pratique o 'F' contínuo focando em volume constante."
+)
+
+pdf.output('Appoggio_Americano_Premium.pdf')
+print("PDF gerado com sucesso: Appoggio_Americano_Premium.pdf")
